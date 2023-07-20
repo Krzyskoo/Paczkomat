@@ -28,21 +28,21 @@ public class PaczkaService {
     }
     @Transactional
     @Scheduled(fixedDelay = 60000)
-    public void aktualizujPaczki() {
+    public void updatePaczki() {
         List<Paczka> paczki = paczkaRepo.findAll();
-        List<Long> paczkiDoZwolnienei= new ArrayList<>();
+        List<Long> paczkiToChangeStatus = new ArrayList<>();
         LocalDateTime currentTime = LocalDateTime.now();
         paczki = paczki.stream()
                 .peek(paczka -> {
                     if (currentTime.isAfter(paczka.getDataWaznosci())) {
                         // Usuń paczkę, jeśli currentTime jest po terminie
-                        paczkiDoZwolnienei.add(paczka.getPaczkomat().getId());
+                        paczkiToChangeStatus.add(paczka.getPaczkomat().getId());
                     }
 
                     if ((currentTime.isEqual(paczka.getCzasWaznosci()) || currentTime.isAfter(paczka.getCzasWaznosci())
                     && !paczka.isRememberMailSended())) {
                         try {
-                            emailService.wyslijEmailPrzypomnienie(paczka);
+                            emailService.sendReminderEmail(paczka);
                             paczka.setRememberMailSended(true);
                         } catch (MessagingException e) {
                             // Obsłuż wyjątek
@@ -51,8 +51,8 @@ public class PaczkaService {
                     }
                 })
                 .collect(Collectors.toList());
-            if (!paczkiDoZwolnienei.isEmpty()) {
-                paczkomatRepo.updatePaczkomatStatus(paczkiDoZwolnienei);
+            if (!paczkiToChangeStatus.isEmpty()) {
+                paczkomatRepo.updatePaczkomatStatus(paczkiToChangeStatus);
             }
 
         // Zapisz zmiany w bazie danych
@@ -86,7 +86,7 @@ public class PaczkaService {
         wolnaPaczkomat.setStatus("zajęta");
         paczkomatRepo.save(wolnaPaczkomat);
 
-        emailService.wyslijEmailNadania(paczka.getEmailOdbiorcy(), paczka.getKodOdbioru(),isHtmlContent);
+        emailService.sendEmailWhenPackageIsSending(paczka.getEmailOdbiorcy(), paczka.getKodOdbioru(),isHtmlContent);
 
         return paczka;
     }
