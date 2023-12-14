@@ -42,25 +42,8 @@ public class PackController {
 
     @PostMapping("/sendParcel")
     public ResponseEntity<String> sendPack(@RequestBody Packs pack,
-                                           @AuthenticationPrincipal User user) throws MessagingException, StripeException {
-
-        Stripe.apiKey= "sk_test_51OHCJtDC7PH0QkQkgOZfQKT0MLhcPVSyTOX1lRLeeDwPpCDHmXmSVvyTWlW45jS1xN5gWBjfibWS6zr2RJdlEoTJ00nxzxvhYK";
-
-
-        PaymentIntent paymentIntent = PaymentIntent.create(
-                new PaymentIntentCreateParams.Builder()
-                        .setCurrency("usd") // Lub inna waluta
-                        .setAmount(1099L)    // Kwota w centach
-                        .setReturnUrl("http://localhost:8080/payment/success")
-                        .setConfirm(true)
-                        .build()
-        );
-
-
-
-        if ("succeeded".equals(paymentIntent.getStatus())) {
-            // Płatność zakończona sukcesem, aktualizuj status paczki
-            pack.setUser(userService.findById(user.getId()));
+                                           @AuthenticationPrincipal User user) throws MessagingException {
+        pack.setUser(userService.findById(user.getId()));
             pack.setEmailSender(user.getEmail());
             pack.setDateOfPosting(LocalDateTime.now());
             pack.setExpirationDate(LocalDateTime.now().plusDays(7));
@@ -72,11 +55,7 @@ public class PackController {
             emailService.sendEmailWhenPackIsSending(pack.getEmailReceiver(), pack.getPickupCode());
 
             return ResponseEntity.ok("Paczka wysłana");
-        } else {
-            // Płatność nie powiodła się, zwróć odpowiednią odpowiedź
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Błąd płatności");
         }
-    }
     @GetMapping("/receivePack/{pickupCode}")
     public ResponseEntity<String> receivePack(@PathVariable String pickupCode,
                                               @AuthenticationPrincipal User user) {
