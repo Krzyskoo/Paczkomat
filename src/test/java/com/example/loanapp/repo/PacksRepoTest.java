@@ -1,65 +1,61 @@
 package com.example.loanapp.repo;
 
 import com.example.loanapp.model.*;
-import org.junit.jupiter.api.Assertions;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
-@ExtendWith(SpringExtension.class)
+import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class PacksRepoTest {
-
-
     @Autowired
-    private PacksRepo underTest;
-
-
-
+    private PacksRepo packsRepo;
+    @Autowired
+    private ParcelLockerRepo parcelLockerRepo;
+    @Autowired
+    private UserRepo userRepo;
     @Test
-    void findByExpirationDateLessThan() {
-       //given
-        Packs packs= new Packs(1L,
-                "kk@o2.pl",
-                "bb@o2.pl",
-                "123456",
-                Size.MEDIUM,
-                Status.TO_RECEIVE,
-                false,
-                LocalDateTime.now(),
-                LocalDateTime.now().plusDays(2),new ParcelLocker(),new User());
-        underTest.save(packs);
-
-        //when
-        List<Packs> result=underTest.findByExpirationDateLessThan(LocalDateTime.now().plusDays(3));
-
-        //then
-        assertThat(result).isEqualTo(packs);    }
-
-    @Test
-    void findByPickupCode() {
+    @Transactional
+    void shouldReturnPackWhoExpirationDateIsLessThanThreeHours() {
         //given
-        Packs packs= new Packs(1L,
-                "kk@o2.pl",
-                "bb@o2.pl",
-                "123456",
-                Size.MEDIUM,
-                Status.TO_RECEIVE,
-                false,
-                LocalDateTime.now(),
-                LocalDateTime.now().plusDays(2),new ParcelLocker(),new User());
+        Packs packs = new Packs(2L,"kkaa@o2.pl","oaod@o2.pl","12345",Size.MEDIUM,Status.TO_RECEIVE,false, LocalDateTime.now(),LocalDateTime.now().plusDays(1),createParcelLocker(),createUser());
+        userRepo.save(createUser());
+        parcelLockerRepo.save(createParcelLocker());
+        packsRepo.save(packs);
+        //when
+        List<Packs> result = packsRepo.findByExpirationDateLessThan(LocalDateTime.now().plusDays(3));
+        //then
+        assertThat(result).contains(packs);
+
+
+    }
+
+    @Test
+    @Transactional
+    void shouldReturnPackByPickupCode() {
+        //given
+        Packs packs = new Packs(1L,"kkaa@o2.pl","oaod@o2.pl","12345",Size.MEDIUM,Status.TO_RECEIVE,false, LocalDateTime.now(),LocalDateTime.now().plusDays(5),createParcelLocker(),createUser());
+        userRepo.save(createUser());
+        parcelLockerRepo.save(createParcelLocker());
+
+        packsRepo.save(packs);
 
         //when
-        Packs pack = underTest.findByPickupCode(packs.getPickupCode());
+        Packs result=packsRepo.findByPickupCode(packs.getPickupCode());
         //then
-        assertThat(pack).isEqualTo(pack);
+        assertThat(result).isNotNull();
+        assertThat(result.getEmailSender()).isEqualTo("kkaa@o2.pl");
+        assertThat(result.getEmailReceiver()).isEqualTo("oaod@o2.pl");}
+
+    public User createUser(){
+        return new User(1L,"krzystzof","Kandyba","kk@o2.pl","kkk", Role.USER);
     }
+    public ParcelLocker createParcelLocker(){
+        return new ParcelLocker(1L,1, Size.MEDIUM,true,false);
+    }
+
 }

@@ -26,6 +26,11 @@ public class ParcelLocker {
     @OneToMany(mappedBy = "parcelLocker")
     private List<Packs> packs;
 
-
-
+    public ParcelLocker(Long id, int number, Size size, boolean isFree, boolean returnToSender) {
+        this.id = id;
+        this.number = number;
+        this.size = size;
+        this.isFree = isFree;
+        this.returnToSender = returnToSender;
+    }
 }

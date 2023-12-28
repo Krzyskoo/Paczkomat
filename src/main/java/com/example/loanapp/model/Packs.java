@@ -37,5 +37,6 @@ public class Packs {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
 }
+
+
