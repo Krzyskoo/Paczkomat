@@ -37,7 +37,7 @@ class ParcelLockerRepoTest {
     @Test
     @Transactional
     @Modifying
-    void updateStatus() {
+    void shouldUpdateStatus() {
         //given
         ParcelLocker parcelLocker =new ParcelLocker(1L,1, Size.SMALL,true,false);
         ParcelLocker parcelLocker2 =new ParcelLocker(2L,2, Size.SMALL,false,false);

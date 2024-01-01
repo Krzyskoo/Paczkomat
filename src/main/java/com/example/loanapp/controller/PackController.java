@@ -43,14 +43,8 @@ public class PackController {
     @PostMapping("/sendParcel")
     public ResponseEntity<String> sendPack(@RequestBody Packs pack,
                                            @AuthenticationPrincipal User user) throws MessagingException {
-        pack.setUser(userService.findById(user.getId()));
-            pack.setEmailSender(user.getEmail());
-            pack.setDateOfPosting(LocalDateTime.now());
-            pack.setExpirationDate(LocalDateTime.now().plusDays(7));
-            pack.setStatus(Status.TO_RECEIVE);
 
-            // Zapisz paczkę w bazie danych
-            packsService.sendParcel(pack);
+            packsService.sendParcel(pack,user);
 
             emailService.sendEmailWhenPackIsSending(pack.getEmailReceiver(), pack.getPickupCode());
 

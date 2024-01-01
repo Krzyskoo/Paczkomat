@@ -35,7 +35,7 @@ class EmailServiceTest {
     private JavaMailSender javaMailSender;
 
     @Test
-    void sendEmail() throws MessagingException {
+    void shouldSendEmail() throws MessagingException {
         // GIVEN (Zakładając)
         when(javaMailSender.createMimeMessage()).thenReturn(new MimeMessage((Session) null));
         String to = "test@example.com";
@@ -55,7 +55,7 @@ class EmailServiceTest {
 
     }
     @Test
-    void sendEmailWhenPackIsSending() throws Exception {
+    void shouldSendEmailWhenPackIsSending() throws Exception {
         //GIVEN
         when(javaMailSender.createMimeMessage()).thenReturn(new MimeMessage((Session) null));
         String email = "test@example.com";

@@ -3,6 +3,7 @@ package com.example.loanapp.service;
 import com.example.loanapp.model.Packs;
 import com.example.loanapp.model.ParcelLocker;
 import com.example.loanapp.model.Status;
+import com.example.loanapp.model.User;
 import com.example.loanapp.repo.PacksRepo;
 import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
@@ -33,13 +34,18 @@ public class PacksService {
         this.emailService = emailService;
     }
 
-    public void sendParcel(Packs pack){
+    @Transactional
+    public void sendParcel(Packs pack, User user){
         ParcelLocker parcelLocker = parcelLockerService.findFreeParcelLocker(pack.getSize());
         pack.setParcelLocker(parcelLocker);
         pack.setPickupCode(createPickupCode());
-        pack.setUser(userService.GetUserByEmail(pack.getEmailSender()));
-        packsRepo.save(pack);
+        pack.setUser(userService.findById(user.getId()));
+        pack.setEmailSender(user.getEmail());
+        pack.setDateOfPosting(LocalDateTime.now());
+        pack.setExpirationDate(LocalDateTime.now().plusDays(7));
+        pack.setStatus(Status.TO_RECEIVE);
         parcelLockerService.updateStatusParcelLocker(parcelLocker.getId(),false);
+        packsRepo.save(pack);
 
     }
     public String createPickupCode(){

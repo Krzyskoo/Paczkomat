@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b45b1dd-a6f0-4695-bdb3-b8edf7e681d2" name="Changes" comment="PackageRepoTest">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/ParcelLockerRepoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/UserRepoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/EmailServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/PacksServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/ParcelLockerServiceTest.java" afterDir="false" />
+    <list default="true" id="1b45b1dd-a6f0-4695-bdb3-b8edf7e681d2" name="Changes" comment="ReposAndEmailServiceTests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/loanapp/controller/PackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/loanapp/controller/PackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/loanapp/service/PacksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/loanapp/service/PacksService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/ParcelLockerRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/ParcelLockerRepoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/EmailServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/EmailServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/PacksServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/PacksServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +99,7 @@
       <recent name="com.example.loanapp.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EmailServiceTest">
+  <component name="RunManager" selected="JUnit.PacksServiceTest.checkExpirationDates">
     <configuration name="EmailServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PaczkomatApp" />
       <extension name="coverage">
@@ -116,7 +115,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmailServiceTest.sendEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PacksServiceTest.checkExpirationDates" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PaczkomatApp" />
       <extension name="coverage">
         <pattern>
@@ -125,14 +124,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.loanapp.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.EmailServiceTest" />
-      <option name="METHOD_NAME" value="sendEmail" />
+      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.PacksServiceTest" />
+      <option name="METHOD_NAME" value="checkExpirationDates" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmailServiceTest.sendEmailWhenPackIsSending" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PacksServiceTest.createPickupCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PaczkomatApp" />
       <extension name="coverage">
         <pattern>
@@ -141,14 +140,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.loanapp.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.EmailServiceTest" />
-      <option name="METHOD_NAME" value="sendEmailWhenPackIsSending" />
+      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.PacksServiceTest" />
+      <option name="METHOD_NAME" value="createPickupCode" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EmailServiceTest.sendReminderEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PacksServiceTest.sendParcel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PaczkomatApp" />
       <extension name="coverage">
         <pattern>
@@ -157,8 +156,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.loanapp.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.EmailServiceTest" />
-      <option name="METHOD_NAME" value="sendReminderEmail" />
+      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.PacksServiceTest" />
+      <option name="METHOD_NAME" value="sendParcel" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -189,11 +188,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EmailServiceTest" />
-        <item itemvalue="JUnit.EmailServiceTest.sendReminderEmail" />
-        <item itemvalue="JUnit.EmailServiceTest.sendEmailWhenPackIsSending" />
-        <item itemvalue="JUnit.EmailServiceTest.sendEmail" />
+        <item itemvalue="JUnit.PacksServiceTest.checkExpirationDates" />
+        <item itemvalue="JUnit.PacksServiceTest.sendParcel" />
         <item itemvalue="JUnit.ParcelLockerRepoTest.updateStatus" />
+        <item itemvalue="JUnit.PacksServiceTest.createPickupCode" />
+        <item itemvalue="JUnit.EmailServiceTest" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +233,7 @@
       <workItem from="1703787807105" duration="12892000" />
       <workItem from="1703961142805" duration="2547000" />
       <workItem from="1704028696585" duration="216000" />
-      <workItem from="1704109155385" duration="3722000" />
+      <workItem from="1704109155385" duration="15029000" />
     </task>
     <task id="LOCAL-00001" summary="Project_to_CV">
       <created>1702241118853</created>
@@ -271,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703802304471</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="ReposAndEmailServiceTests">
+      <created>1704113590363</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1704113590363</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +310,8 @@
     <MESSAGE value="Project_to_CV" />
     <MESSAGE value="OneTestDone" />
     <MESSAGE value="PackageRepoTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="PackageRepoTest" />
+    <MESSAGE value="ReposAndEmailServiceTests" />
+    <option name="LAST_COMMIT_MESSAGE" value="ReposAndEmailServiceTests" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
