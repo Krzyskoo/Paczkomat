@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b45b1dd-a6f0-4695-bdb3-b8edf7e681d2" name="Changes" comment="OneTestDone">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+    <list default="true" id="1b45b1dd-a6f0-4695-bdb3-b8edf7e681d2" name="Changes" comment="PackageRepoTest">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/ParcelLockerRepoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/UserRepoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/EmailServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/PacksServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/ParcelLockerServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/loanapp/model/Packs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/loanapp/model/Packs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/loanapp/model/ParcelLocker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/loanapp/model/ParcelLocker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/LoanAppApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/LoanAppApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/controller/PackControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/PacksRepoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/PacksRepoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/ParcelLockerRepoTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/repo/UserRepoTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/EmailServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/PacksServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/ParcelLockerServiceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/loanapp/service/UserServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,35 +53,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/krzys/IdeaProjects/loanApp/src/test/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "spring.configuration.checksum": "4eaaab4aa3c3f08c5a234b976b8d7a91",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/krzys/IdeaProjects/loanApp/src/test/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;4eaaab4aa3c3f08c5a234b976b8d7a91&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.loanapp.auth" />
@@ -101,44 +95,76 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.loanapp.service" />
       <recent name="com.example.loanapp.repo" />
       <recent name="com.example.loanapp.controller" />
-      <recent name="com.example.loanapp.service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PacksRepoTest.shouldReturnPackWhoExpirationDateIsLessThanThreeHours">
-    <configuration name="PacksRepoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.EmailServiceTest">
+    <configuration name="EmailServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PaczkomatApp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.loanapp.repo.*" />
+          <option name="PATTERN" value="com.example.loanapp.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.loanapp.repo" />
-      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.repo.PacksRepoTest" />
+      <option name="PACKAGE_NAME" value="com.example.loanapp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.EmailServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PacksRepoTest.shouldReturnPackByPickupCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EmailServiceTest.sendEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PaczkomatApp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.loanapp.repo.*" />
+          <option name="PATTERN" value="com.example.loanapp.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.loanapp.repo" />
-      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.repo.PacksRepoTest" />
-      <option name="METHOD_NAME" value="shouldReturnPackByPickupCode" />
+      <option name="PACKAGE_NAME" value="com.example.loanapp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.EmailServiceTest" />
+      <option name="METHOD_NAME" value="sendEmail" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PacksRepoTest.shouldReturnPackWhoExpirationDateIsLessThanThreeHours" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EmailServiceTest.sendEmailWhenPackIsSending" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PaczkomatApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.loanapp.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.loanapp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.EmailServiceTest" />
+      <option name="METHOD_NAME" value="sendEmailWhenPackIsSending" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmailServiceTest.sendReminderEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PaczkomatApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.loanapp.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.loanapp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.service.EmailServiceTest" />
+      <option name="METHOD_NAME" value="sendReminderEmail" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ParcelLockerRepoTest.updateStatus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PaczkomatApp" />
       <extension name="coverage">
         <pattern>
@@ -147,8 +173,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.example.loanapp.repo" />
-      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.repo.PacksRepoTest" />
-      <option name="METHOD_NAME" value="shouldReturnPackWhoExpirationDateIsLessThanThreeHours" />
+      <option name="MAIN_CLASS_NAME" value="com.example.loanapp.repo.ParcelLockerRepoTest" />
+      <option name="METHOD_NAME" value="updateStatus" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -163,9 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PacksRepoTest.shouldReturnPackWhoExpirationDateIsLessThanThreeHours" />
-        <item itemvalue="JUnit.PacksRepoTest.shouldReturnPackByPickupCode" />
-        <item itemvalue="JUnit.PacksRepoTest" />
+        <item itemvalue="JUnit.EmailServiceTest" />
+        <item itemvalue="JUnit.EmailServiceTest.sendReminderEmail" />
+        <item itemvalue="JUnit.EmailServiceTest.sendEmailWhenPackIsSending" />
+        <item itemvalue="JUnit.EmailServiceTest.sendEmail" />
+        <item itemvalue="JUnit.ParcelLockerRepoTest.updateStatus" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +231,10 @@
       <workItem from="1702926125692" duration="1211000" />
       <workItem from="1703700942970" duration="620000" />
       <workItem from="1703775474717" duration="1078000" />
-      <workItem from="1703787807105" duration="9961000" />
+      <workItem from="1703787807105" duration="12892000" />
+      <workItem from="1703961142805" duration="2547000" />
+      <workItem from="1704028696585" duration="216000" />
+      <workItem from="1704109155385" duration="3722000" />
     </task>
     <task id="LOCAL-00001" summary="Project_to_CV">
       <created>1702241118853</created>
@@ -233,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702653973652</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="PackageRepoTest">
+      <created>1703802304471</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1703802304471</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,7 +288,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Payment_Intend" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -265,7 +303,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project_to_CV" />
     <MESSAGE value="OneTestDone" />
-    <option name="LAST_COMMIT_MESSAGE" value="OneTestDone" />
+    <MESSAGE value="PackageRepoTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="PackageRepoTest" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
