@@ -1,25 +1,17 @@
 package com.example.loanapp.controller;
 
+import com.example.loanapp.exeptions.EmailExceptionByClient;
 import com.example.loanapp.model.Packs;
-import com.example.loanapp.model.ParcelLocker;
-import com.example.loanapp.model.Status;
 import com.example.loanapp.model.User;
 import com.example.loanapp.service.EmailService;
 import com.example.loanapp.service.PacksService;
 import com.example.loanapp.service.ParcelLockerService;
 import com.example.loanapp.service.UserService;
-import com.stripe.Stripe;
-import com.stripe.exception.StripeException;
-import com.stripe.model.PaymentIntent;
-import com.stripe.param.PaymentIntentCreateParams;
 import jakarta.mail.MessagingException;
-import lombok.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailSendException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/vi")
@@ -40,17 +32,18 @@ public class PackController {
         this.emailService = emailService;
     }
 
-    @PostMapping("/sendParcel")
-    public ResponseEntity<String> sendPack(@RequestBody Packs pack,
-                                           @AuthenticationPrincipal User user) throws MessagingException {
-
-            packsService.sendParcel(pack,user);
-
-            emailService.sendEmailWhenPackIsSending(pack.getEmailReceiver(), pack.getPickupCode());
-
-            return ResponseEntity.ok("Paczka wysłana");
+    @PostMapping("/parcel")
+    public ResponseEntity<?> sendPack(@RequestBody Packs pack,
+                                           @AuthenticationPrincipal User user) {
+        try {
+            packsService.sendParcel(pack, user);
+            return ResponseEntity.ok().body("Paczka wysłana");
+        } catch (MailSendException | MessagingException e) {
+            throw new EmailExceptionByClient();
         }
-    @GetMapping("/receivePack/{pickupCode}")
+        //request do poprawy w przypadku podania złego adresu email, który nie istnieje
+    }
+    @GetMapping("/parcel/{pickupCode}")
     public ResponseEntity<String> receivePack(@PathVariable String pickupCode,
                                               @AuthenticationPrincipal User user) {
         return ResponseEntity.ok(packsService.receivePack(pickupCode));

@@ -1,5 +1,6 @@
 package com.example.loanapp.service;
 
+import com.example.loanapp.exeptions.EmailExceptionByServer;
 import com.example.loanapp.model.Packs;
 import com.example.loanapp.model.ParcelLocker;
 import com.example.loanapp.model.Status;
@@ -18,11 +19,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class PacksService {
-    private PacksRepo packsRepo;
-    private UserService userService;
-    private ParcelLockerService parcelLockerService;
+    private final PacksRepo packsRepo;
+    private final UserService userService;
+    private final ParcelLockerService parcelLockerService;
 
-    private EmailService emailService;
+    private final EmailService emailService;
 
     public PacksService(PacksRepo packsRepo,
                         UserService userService,
@@ -35,7 +36,7 @@ public class PacksService {
     }
 
     @Transactional
-    public void sendParcel(Packs pack, User user){
+    public void sendParcel(Packs pack, User user) throws MessagingException {
         ParcelLocker parcelLocker = parcelLockerService.findFreeParcelLocker(pack.getSize());
         pack.setParcelLocker(parcelLocker);
         pack.setPickupCode(createPickupCode());
@@ -44,8 +45,14 @@ public class PacksService {
         pack.setDateOfPosting(LocalDateTime.now());
         pack.setExpirationDate(LocalDateTime.now().plusDays(7));
         pack.setStatus(Status.TO_RECEIVE);
-        parcelLockerService.updateStatusParcelLocker(parcelLocker.getId(),false);
+        pack.setReminderMessageSend(false);
+        parcelLockerService.updateStatusParcelLocker(parcelLocker.getId(), false);
         packsRepo.save(pack);
+
+        emailService.sendEmailWhenPackIsSending(pack.getEmailReceiver(), pack.getPickupCode());
+
+
+
 
     }
     public String createPickupCode(){
@@ -73,7 +80,7 @@ public class PacksService {
                emailService.sendReminderEmail(packs);
                packs.setReminderMessageSend(true);
            } catch (MessagingException e) {
-               throw new RuntimeException(e);
+               throw new EmailExceptionByServer();
            }
        });
 
@@ -86,7 +93,6 @@ public class PacksService {
         if(checkPackStatus(receivePack).equals(true)) {
             receivePack.setStatus(Status.RECEIVE);
             packsRepo.save(receivePack);
-
             parcelLockerService.updateStatusParcelLocker(receivePack.getParcelLocker().getId(), true);
             return "Paczka odebrana pomyślnie :))";
         }else {

@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,27 +21,28 @@ class PacksRepoTest {
     private UserRepo userRepo;
     @Test
     @Transactional
+    @Commit
     void shouldReturnPackWhoExpirationDateIsLessThanThreeHours() {
         //given
-        Packs packs = new Packs(2L,"kkaa@o2.pl","oaod@o2.pl","12345",Size.MEDIUM,Status.TO_RECEIVE,false, LocalDateTime.now(),LocalDateTime.now().plusDays(1),createParcelLocker(),createUser());
         userRepo.save(createUser());
-        parcelLockerRepo.save(createParcelLocker());
+        ParcelLocker parcelLocker = createParcelLocker(); // Tworzymy obiekt ParcelLocker
+        parcelLockerRepo.save(parcelLocker); // Zapisujemy obiekt ParcelLocker w bazie danych
+        Packs packs = new Packs(1L, "kkaa@o2.pl", "oaod@o2.pl", "12345", Size.MEDIUM, Status.TO_RECEIVE, false, LocalDateTime.now(), LocalDateTime.now().plusDays(1), parcelLocker, createUser());
         packsRepo.save(packs);
-        //when
+//when
         List<Packs> result = packsRepo.findByExpirationDateLessThan(LocalDateTime.now().plusDays(3));
-        //then
+//then
         assertThat(result).contains(packs);
-
-
     }
 
     @Test
     @Transactional
     void shouldReturnPackByPickupCode() {
         //given
-        Packs packs = new Packs(1L,"kkaa@o2.pl","oaod@o2.pl","12345",Size.MEDIUM,Status.TO_RECEIVE,false, LocalDateTime.now(),LocalDateTime.now().plusDays(5),createParcelLocker(),createUser());
         userRepo.save(createUser());
         parcelLockerRepo.save(createParcelLocker());
+        Packs packs = new Packs(1L,"kkaa@o2.pl","oaod@o2.pl","12345",Size.MEDIUM,Status.TO_RECEIVE,false, LocalDateTime.now(),LocalDateTime.now().plusDays(5),createParcelLocker(),createUser());
+
 
         packsRepo.save(packs);
 
@@ -55,7 +57,7 @@ class PacksRepoTest {
         return new User(1L,"krzystzof","Kandyba","kk@o2.pl","kkk", Role.USER);
     }
     public ParcelLocker createParcelLocker(){
-        return new ParcelLocker(1L,1, Size.MEDIUM,true,false);
+        return new ParcelLocker(2L,1, Size.MEDIUM,true,false);
     }
 
 }

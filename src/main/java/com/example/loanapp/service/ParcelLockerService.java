@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class ParcelLockerService {
-    private ParcelLockerRepo parcelLockerRepo;
+    private final ParcelLockerRepo parcelLockerRepo;
 
     public ParcelLockerService(ParcelLockerRepo parcelLockerRepo) {
         this.parcelLockerRepo = parcelLockerRepo;

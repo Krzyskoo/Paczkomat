@@ -33,4 +33,6 @@ public class ParcelLocker {
         this.isFree = isFree;
         this.returnToSender = returnToSender;
     }
+
+
 }

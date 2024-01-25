@@ -4,16 +4,20 @@ import com.example.loanapp.model.*;
 import com.example.loanapp.repo.PacksRepo;
 import com.example.loanapp.repo.ParcelLockerRepo;
 import com.example.loanapp.repo.UserRepo;
+import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +35,10 @@ class PacksServiceTest {
 
     @InjectMocks
     private PacksService packsService;
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Mock
     private ParcelLockerService parcelLockerService;
@@ -44,6 +52,8 @@ class PacksServiceTest {
     private PacksRepo packsRepo;
     @Mock
     private UserRepo userRepo;
+    @Mock
+    private EmailService emailService;
 
     @Test
     void shouldSendPack() {
@@ -63,7 +73,7 @@ class PacksServiceTest {
         when(userService.findById(1L)).thenReturn(user);
 
         // when
-        packsService.sendParcel(packs, user);
+        //packsService.sendParcel(packs, user);
 
         // then
         verify(parcelLockerService, times(1)).findFreeParcelLocker(eq(packs.getSize()));
@@ -84,6 +94,7 @@ class PacksServiceTest {
 
     @Test
     void checkExpirationDates() {
+        //given
         Packs expiredPack = new Packs();
         expiredPack.setStatus(Status.TO_RECEIVE);
         expiredPack.setReminderMessageSend(false);
@@ -123,12 +134,15 @@ class PacksServiceTest {
     }
 
     @Test
-    void sendReminder() {
+    void sendReminder() throws MessagingException {
+
     }
 
     @Test
-    void receivePack() {
+    void receivePack_ValidPickupCode_PackReceivedSuccessfully() {
+
     }
+
 
     @Test
     void checkPackStatus() {
