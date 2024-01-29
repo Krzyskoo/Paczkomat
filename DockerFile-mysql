@@ -1,0 +1,5 @@
+FROM mysql:latest
+ENV MYSQL_ROOT_PASSWORD=pass
+ENV MYSQL_DATABASE=loan_database
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=pass
