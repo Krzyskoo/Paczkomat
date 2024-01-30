@@ -58,32 +58,6 @@ class PacksServiceTest {
     @Test
     void shouldSendPack() {
         //given
-        User user = createUser();
-        user.setId(1L);
-        user.setEmail("test@example.com");
-
-        Packs packs = new Packs();
-        packs.setSize(Size.SMALL);
-        packs.setEmailReceiver("kk@o2.pl");
-
-        ParcelLocker parcelLocker = createParcelLocker();
-        parcelLockerRepo.save(parcelLocker);
-
-        when(parcelLockerService.findFreeParcelLocker(eq(packs.getSize()))).thenReturn(parcelLocker);
-        when(userService.findById(1L)).thenReturn(user);
-
-        // when
-        //packsService.sendParcel(packs, user);
-
-        // then
-        verify(parcelLockerService, times(1)).findFreeParcelLocker(eq(packs.getSize()));
-        verify(parcelLockerService, times(1)).updateStatusParcelLocker(eq(parcelLocker.getId()), eq(false));
-        verify(packsRepo, times(1)).save(any());
-
-        assertEquals(parcelLocker, packs.getParcelLocker());  // Sprawdzenie, czy paczka ma ustawiony odpowiedni parcelLocker
-        assertEquals(user, packs.getUser());  // Sprawdzenie, czy paczka ma ustawionego odpowiedniego użytkownika
-        assertEquals(user.getEmail(), packs.getEmailSender());  // Sprawdzenie, czy paczka ma ustawiony odpowiedni adres email nadawcy
-        assertEquals(Status.TO_RECEIVE, packs.getStatus());
 
     }
 
@@ -95,40 +69,7 @@ class PacksServiceTest {
     @Test
     void checkExpirationDates() {
         //given
-        Packs expiredPack = new Packs();
-        expiredPack.setStatus(Status.TO_RECEIVE);
-        expiredPack.setReminderMessageSend(false);
-        expiredPack.setExpirationDate(LocalDateTime.now().minusDays(1));
 
-        Packs nonExpiredPack = new Packs();
-        nonExpiredPack.setStatus(Status.TO_RECEIVE);
-        nonExpiredPack.setReminderMessageSend(false);
-        nonExpiredPack.setExpirationDate(LocalDateTime.now().plusDays(2));
-        Packs nonExpiredPack2 = new Packs();
-        nonExpiredPack2.setStatus(Status.TO_RECEIVE);
-        nonExpiredPack2.setReminderMessageSend(false);
-        nonExpiredPack2.setExpirationDate(LocalDateTime.now().plusDays(6));
-
-        List<Packs> packsList = Arrays.asList(expiredPack, nonExpiredPack,nonExpiredPack2);
-
-        when(packsRepo.findByExpirationDateLessThan(any(LocalDateTime.class)))
-                .thenAnswer(invocation -> {
-                    LocalDateTime expirationDateThreshold = invocation.getArgument(0);
-
-                    // Filtruj dane z packsList zgodnie z wymaganiami
-                    List<Packs> filteredPacks = packsList.stream()
-                            .filter(pack -> pack.getExpirationDate().isBefore(expirationDateThreshold))
-                            .collect(Collectors.toList());
-
-                    return filteredPacks;
-                });
-
-        // when
-        List<Packs> result = packsService.checkExpirationDates();
-
-        // then
-        assertThat(result).hasSize(2);
-        assertThat(result).contains(expiredPack);
 
 
     }

@@ -35,7 +35,6 @@ class ParcelLockerRepoTest {
     }
 
     @Test
-    @Transactional
     @Modifying
     void shouldUpdateStatus() {
         //given
